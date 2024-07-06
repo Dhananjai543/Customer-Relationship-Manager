@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Save Customer</title>
+    
+    <link type="text/css"
+          rel="stylesheet"
+          th:href="@{/css/style.css}" />
+    
+    <link type="text/css"
+          rel="stylesheet"
+          th:href="@{/css/add-customer-style.css}" />
+    
+</head>
+<body>
+<noscript>
+    <h2>Sorry! Your browser doesn't support Javascript</h2>
+</noscript>
+    <div id="wrapper">
+        <div id="header">
+            <h2>CRM - Customer Relationship Manager</h2>
+        
+        </div>
+    </div>
+    
+    <div id="container">
+        <h3>Save Customer</h3>
+        
+        <form th:action="@{/customer/saveCustomer}" th:object="${customer}" method="POST">
+        
+            <h4 th:text="${error}"></h4>
+        
+            <!-- need to associate this data with customer id -->
+            <input type="hidden" th:field="*{id}" />
+            
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label>First Name:</label></td>
+                        <td><input th:field="*{firstName}" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label>Last Name:</label></td>
+                        <td><input th:field="*{lastName}" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input th:field="*{email}" /></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label></label></td>
+                        <td><input type="submit" value="Save" class="save" /></td>
+                    </tr>
+                    
+                </tbody>
+            
+            </table>
+        </form>
+        
+        <div style="clear: both;">
+        
+        <p>
+            <a th:href="@{/customer/list}">Back to list</a>
+        </p>
+        
+        </div>
+        
+    </div>
+
+<script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>
