@@ -1,42 +1,146 @@
-form {
-	margin-top: 10px;
+/* General Page Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-label {
-	font-size: 16px; 
-	width: 100px; 
-	display: block; 
-	text-align: right;
-	margin-right: 10px;
-	margin-top: 8px;
-	margin-bottom: 8px;
+/* Header Styles */
+#wrapper {
+    width: 100%;
+    background-color: #007BFF;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure header doesn't overlap content */
 }
 
-input {
-	width: 250px;
-	border: 1px solid #666; 
-	border-radius: 5px; 
-	padding: 4px; 
-	font-size: 16px;
+#header h2 {
+    margin: 1px;
 }
 
-.save {
-	font-weight: bold;
-	width: 130px; 
-	padding: 5px 10px; 
-	margin-top: 30px;
-	background: #cccccc;
+/* Container for page content */
+#container {
+    width: 50%;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 8px auto; /* Centered */
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+    position: relative; /* Ensures that content doesn’t overlap with footer */
+    z-index: 1; /* Ensure container is above the footer */
 }
 
-table {   
-	border-style:none;
-	width:50%;
+/* Page Title and Form */
+h3 {
+    margin-bottom: 1px;
+    color: #007BFF;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #FFFFFF}
+h4 {
+    color: #ff4d4d; /* Red for errors */
+    font-weight: bold;
+    margin-bottom: 1px;
+}
 
-tr {
-	border-style:none;
-	text-align:left;	
+/* Form Styles */
+.customer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Space between form elements */
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 1px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Form Buttons */
+.save, .delete, .add-button, .update-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.save:hover, .delete:hover, .add-button:hover, .update-button:hover {
+    background-color: #218838;
+}
+
+/* Back Link Styles */
+.back-link {
+    margin-top: 1px;
+}
+
+.back-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    color: black;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 4px 0;
+    position: relative;
+    margin-top: 2px; /* Add space between content and footer */
+    width: 100%;
+    bottom: 0;
+    font-size: 14px;
 }

@@ -1,75 +1,59 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Save Customer</title>
     
-    <link type="text/css"
-          rel="stylesheet"
-          th:href="@{/css/style.css}" />
-    
-    <link type="text/css"
-          rel="stylesheet"
-          th:href="@{/css/add-customer-style.css}" />
-    
+    <!-- Reference our style sheet -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/add-customer-style.css}" />
 </head>
 <body>
-<noscript>
-    <h2>Sorry! Your browser doesn't support Javascript</h2>
-</noscript>
+    <noscript>
+        <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
     <div id="wrapper">
         <div id="header">
             <h2>CRM - Customer Relationship Manager</h2>
-        
         </div>
     </div>
     
     <div id="container">
         <h3>Save Customer</h3>
         
-        <form th:action="@{/customer/saveCustomer}" th:object="${customer}" method="POST">
+        <form th:action="@{/customer/saveCustomer}" th:object="${customer}" method="POST" class="customer-form">
+            <h4 th:text="${error}" class="error-message"></h4>
         
-            <h4 th:text="${error}"></h4>
-        
-            <!-- need to associate this data with customer id -->
+            <!-- Hidden field for customer id -->
             <input type="hidden" th:field="*{id}" />
             
-            <table>
-                <tbody>
-                    <tr>
-                        <td><label>First Name:</label></td>
-                        <td><input th:field="*{firstName}" /></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label>Last Name:</label></td>
-                        <td><input th:field="*{lastName}" /></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label>Email:</label></td>
-                        <td><input th:field="*{email}" /></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label></label></td>
-                        <td><input type="submit" value="Save" class="save" /></td>
-                    </tr>
-                    
-                </tbody>
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" th:field="*{firstName}" placeholder="Enter First Name" />
+            </div>
             
-            </table>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" th:field="*{lastName}" placeholder="Enter Last Name" />
+            </div>
+            
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" th:field="*{email}" placeholder="Enter Email" />
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="save" />
+            </div>
         </form>
         
-        <div style="clear: both;">
-        
-        <p>
-            <a th:href="@{/customer/list}">Back to list</a>
-        </p>
-        
+        <div class="back-link">
+            <p><a th:href="@{/customer/list}">Back to list</a></p>
         </div>
-        
     </div>
-
-<script type="text/javascript" src="/js/main.js"></script>
+    
+    <footer>
+        <p>Made with ❤️ by Dhananjai</p>
+    </footer>
+    
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

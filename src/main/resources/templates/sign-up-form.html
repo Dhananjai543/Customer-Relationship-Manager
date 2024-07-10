@@ -8,28 +8,30 @@
 
 <body>
     <div class="container">
-        <h2>Sign Up</h2>
-        <form th:action="@{/processSignUpForm}" th:object="${user}" method="post">
-            
-            <p th:if="${error}" th:text="${error}" class="error"></p>
+        <div class="signup-box">
+            <h2>Sign Up</h2>
+            <form th:action="@{/processSignUpForm}" th:object="${user}" method="post">
 
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" th:field="*{username}" />
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" th:field="*{email}" />
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" th:field="*{password}" />
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a th:href="@{/}">Login</a></p>
+                <p th:if="${error}" th:text="${error}" class="error"></p>
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required />
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" th:field="*{email}" placeholder="Enter your email" required />
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" required />
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a th:href="@{/}">Login</a></p>
+        </div>
     </div>
 </body>
 

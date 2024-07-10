@@ -1,0 +1,102 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wrapper {
+    width: 100%;
+    background-color: #007BFF;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#header h2 {
+    margin: 0;
+}
+
+.button-container {
+    margin: 20px 0;
+}
+
+#addCustomerButton {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addCustomerButton:hover {
+    background-color: #218838;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-size: 16px;
+}
+
+td {
+    font-size: 14px;
+}
+
+.action-link {
+    color: #007BFF;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer strip */
+#footer {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#footer p {
+    margin: 0;
+    font-size: 14px;
+}

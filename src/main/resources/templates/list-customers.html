@@ -4,9 +4,7 @@
     <title>List Customers</title>
     
     <!-- reference our style sheet -->
-    <link type="text/css"
-          rel="stylesheet"
-          th:href="@{/css/style.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{/css/list-customers-styles.css}" />
 </head>
 <body>
 <noscript>
@@ -19,53 +17,43 @@
     </div>
     
     <!-- put a new button : Add Customer -->
-    <div>
+    <div class="button-container">
         <button id="addCustomerButton" name="addCustomerButton" type="button">Add Customer</button>
     </div>
     
     <div id="container">
     
         <div id="content">
-	           
-	           <!-- <input type="button" value="Add Customer"
-                  
-                   class="add-button" />
-            
-            <br> --> 
-            
-            
-            <!--  add our html table here -->
-        
             <table>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-                
-                <!-- loop over and print our customers -->
-                <tr th:each="tempCustomer : ${customers}">
-                    
-                    <!-- construct an "update" link with customer id -->
-                    <td th:text="${tempCustomer.firstName}"></td>
-                    <td th:text="${tempCustomer.lastName}"></td>
-                    <td th:text="${tempCustomer.email}"></td>
-                    
-                    <td>
-                        <!-- Display the update link -->
-                        <a th:href="@{/customer/showFormForUpdate(customerId=${tempCustomer.id})}">Update</a>
-                        |
-                        <a th:href="@{/customer/showFormForDelete(customerId=${tempCustomer.id})}">Delete</a>
-                    </td>
-                </tr>
-                        
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- loop over and print our customers -->
+                    <tr th:each="tempCustomer : ${customers}">
+                        <td th:text="${tempCustomer.firstName}"></td>
+                        <td th:text="${tempCustomer.lastName}"></td>
+                        <td th:text="${tempCustomer.email}"></td>
+                        <td>
+                            <!-- Display the update link -->
+                            <a class="action-link" th:href="@{/customer/showFormForUpdate(customerId=${tempCustomer.id})}">Update</a>
+                            |
+                            <a class="action-link" th:href="@{/customer/showFormForDelete(customerId=${tempCustomer.id})}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-                
         </div>
     
     </div>
-    
-<script type="text/javascript"  src="/js/main.js"></script>
+     <div id="footer">
+        <p>Made with ❤️ by Dhananjai</p>
+    </div>
+<script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

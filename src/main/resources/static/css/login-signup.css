@@ -1,66 +1,112 @@
-.container {
-    width: 300px;
-    margin: 100px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+/* General Body Styles */
+body {
+    background: #f0f2f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.container h2 {
+.login-box {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
     text-align: center;
-    margin-bottom: 20px;
 }
 
+/* Heading Styles */
+.login-box h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Sign-Up Box Styles */
+.signup-box {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Heading Styles */
+.signup-box h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Group Styles */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
+/* Label Styles */
 .input-group label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    color: #555;
 }
 
+/* Input Styles */
 .input-group input {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
 }
 
+/* Button Styles */
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
+    background: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 0.75rem;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #0056b3;
 }
 
+/* Error Message Styles */
 .error {
-    color: red;
-    font-size: 12px;
+    color: #dc3545;
+    margin-bottom: 1rem;
 }
 
-.container p {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.container p a {
-    color: #007BFF;
+/* Link Styles */
+a {
+    color: #007bff;
     text-decoration: none;
 }
 
-.container p a:hover {
+a:hover {
     text-decoration: underline;
 }

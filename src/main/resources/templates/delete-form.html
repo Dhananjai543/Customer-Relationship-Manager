@@ -1,41 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Save Customer</title>
+    <title>Delete Customer</title>
     
-    <link type="text/css"
-          rel="stylesheet"
-          th:href="@{/css/style.css}" />
-    
-    <link type="text/css"
-          rel="stylesheet"
-          th:href="@{/css/add-customer-style.css}" />
-    
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-        table th, table td {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            color: black; /* Added this line to make text black */
-        }
-        table th {
-            background-color: #f2f2f2;
-        }
-        table tr:nth-of-type(even) {
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/add-customer-style.css}" />
 </head>
 <body>
-<noscript>
-    <h2>Sorry! Your browser doesn't support Javascript</h2>
-</noscript>
+    <noscript>
+        <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
     <div id="wrapper">
         <div id="header">
             <h2>CRM - Customer Relationship Manager</h2>
@@ -47,11 +20,11 @@
         <br>
         <h4>Are you sure you want to delete this Customer?</h4>
         
-        <form th:action="@{/customer/delete}" th:object="${customer}" method="POST">
+        <form th:action="@{/customer/delete}" th:object="${customer}" method="POST" class="customer-form">
         
-            <h4 th:text="${error}"></h4>
+            <h4 th:text="${error}" class="error-message"></h4>
         
-            <!-- need to associate this data with customer id -->
+            <!-- Hidden field for customer id -->
             <input type="hidden" th:field="*{id}" />
             
             <!-- Hidden fields to bind the non-editable data back to the form object -->
@@ -78,7 +51,7 @@
                     
                     <tr>
                         <td colspan="2" style="text-align: center;">
-                            <input type="submit" value="Delete" class="save" />
+                            <input type="submit" value="Delete" class="delete" />
                         </td>
                     </tr>
                     
@@ -87,16 +60,15 @@
             </table>
         </form>
         
-        <div style="clear: both;">
-        
-        <p>
-            <a th:href="@{/customer/list}">Back to list</a>
-        </p>
-        
+        <div class="back-link">
+            <p><a th:href="@{/customer/list}">Back to list</a></p>
         </div>
-        
     </div>
-
-<script type="text/javascript" src="/js/main.js"></script>
+    
+    <footer>
+        <p>Made with ❤️ by Dhananjai</p>
+    </footer>
+    
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
