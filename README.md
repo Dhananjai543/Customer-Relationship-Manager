@@ -2,15 +2,6 @@
 
 CRM (Web Customer Tracker) software made using Spring and Hibernate. 
 
-<table>
-  <tr>
-    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm1.png"></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm2.png"></td>
-  </tr>
-</table>
-
 ## Features
 
 - Developed using **Spring Boot** and **Hibernate**.
@@ -19,5 +10,22 @@ CRM (Web Customer Tracker) software made using Spring and Hibernate.
 - **Role-based Authorization** for access to specific APIs.
 - **MySQL** database for user data storage with encrypted passwords.
 - Hibernate used in conjunction with JPA for seamless database interactions.
-- CSS for HTML pages generated using **GitHub Copilot**.
+- 
+<table>
+  <tr>
+    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm1.png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm2.png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm3.png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm4.png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Dhananjai543/Customer-Relationship-Manager/blob/master/assets/crm5.png"></td>
+  </tr>
+</table>
 
