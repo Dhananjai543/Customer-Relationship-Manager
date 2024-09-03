@@ -44,7 +44,7 @@ public class SecurityFilter {
 //                    authConfig.requestMatchers(HttpMethod.POST, "/auth/register").permitAll();
                     authConfig.requestMatchers("/error").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/customer/delete").hasRole("ADMIN");
-                    authConfig.requestMatchers(HttpMethod.GET, "/customer/**").hasRole("USER");
+                    authConfig.requestMatchers(HttpMethod.GET, "/customer/**").hasAnyRole("USER","ADMIN");
                     authConfig.requestMatchers("/**").permitAll();
                     authConfig.anyRequest().authenticated();
 
