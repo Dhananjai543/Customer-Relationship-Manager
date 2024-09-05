@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Order</title>
+    
+    <link type="text/css" rel="stylesheet" th:href="@{/css/add-customer-style.css}" />
+</head>
+<body>
+    <noscript>
+        <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+    <div id="wrapper">
+        <div id="header">
+            <h2>CRM - Customer Relationship Manager</h2>
+        </div>
+    </div>
+    
+    <div id="container">
+        <h3>Delete Order</h3>
+        <br>
+        <h4>Are you sure you want to delete this Order?</h4>
+        
+        <form th:action="@{/order/delete}" th:object="${order}" method="POST" class="customer-form">
+        
+            <h4 th:text="${error}" class="error-message"></h4>
+
+            <input type="hidden" th:field="*{id}" />
+
+            <input type="hidden" th:field="*{custId}" />
+            <input type="hidden" th:field="*{product}" />
+            <input type="hidden" th:field="*{review}" />
+            
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Order #</th>
+                        <td th:text="*{id}"></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Product</th>
+                        <td th:text="*{product}"></td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Review</th>
+                        <td th:text="*{review}"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type="submit" value="Delete" class="delete" />
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            
+            </table>
+        </form>
+        
+        <div class="back-link">
+            <p><a th:href="@{'/order/list?customerId=' + ${order.custId}}">Back to Order list</a></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with ❤️ by Dhananjai</p>
+    </footer>
+    
+    <script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>

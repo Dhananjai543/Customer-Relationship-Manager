@@ -21,11 +21,17 @@ body {
     margin: 0;
 }
 
-.button-container {
+.button-container-wrapper {
+    display: flex;
+    gap: 20px; /* Space between buttons */
     margin: 20px 0;
 }
 
-#addCustomerButton {
+.button-container {
+    margin: 0; /* Reset margin for containers inside flex */
+}
+
+#addCustomerButton, #bulkUploadButton, #addOrderButton, #backToCustomerListButton {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -35,7 +41,10 @@ body {
     transition: background-color 0.3s;
 }
 
-#addCustomerButton:hover {
+#addCustomerButton:hover,
+#addOrderButton:hover,
+#bulkUploadButton:hover,
+#backToCustomerListButton:hover {
     background-color: #218838;
 }
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Save Order</title>
+
+    <!-- Reference our style sheet -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/add-customer-style.css}" />
+</head>
+<body>
+<noscript>
+    <h2>Sorry! Your browser doesn't support Javascript</h2>
+</noscript>
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM - Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<div id="container">
+    <h3>Save Order</h3>
+
+    <form th:action="@{/order/saveOrder}" th:object="${order}" method="POST" class="customer-form">
+        <h4 th:text="${error}" class="error-message"></h4>
+
+        <!-- Hidden field for customer id -->
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{custId}" />
+
+        <div class="form-group">
+            <label>Product:</label>
+            <input type="text" th:field="*{product}" placeholder="Enter Product Name" />
+        </div>
+
+        <div class="form-group">
+            <label>Review:</label>
+            <input type="text" th:field="*{review}" placeholder="Enter Product Review" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="save" />
+        </div>
+    </form>
+
+    <div class="back-link">
+        <p><a th:href="@{'/order/list?customerId=' + ${order.custId}}">Back to Order list</a></p>
+    </div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by Dhananjai</p>
+</footer>
+
+</body>
+</html>

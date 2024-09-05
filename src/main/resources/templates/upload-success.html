@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Results</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/upload.css}"/>
+</head>
+<body>
+
+<div class="card">
+    <b>Total <span th:text="${noOfRecords}">0</span> records uploaded!</b>
+
+    <div class="back-link">
+        <a th:href="@{/customer/list}">Back to list</a>
+    </div>
+</div>
+
+</body>
+</html>

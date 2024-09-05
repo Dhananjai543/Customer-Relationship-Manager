@@ -17,9 +17,16 @@
     </div>
     
     <!-- put a new button : Add Customer -->
-    <div class="button-container">
-        <button id="addCustomerButton" name="addCustomerButton" type="button">Add Customer</button>
+    <div class="button-container-wrapper">
+        <div class="button-container">
+            <button id="addCustomerButton" name="addCustomerButton" type="button">Add Customer</button>
+        </div>
+
+        <div class="button-container">
+            <button id="bulkUploadButton" name="bulkUploadButton" type="button">Bulk Upload</button>
+        </div>
     </div>
+
     
     <div id="container">
     
@@ -44,6 +51,9 @@
                             <a class="action-link" th:href="@{/customer/showFormForUpdate(customerId=${tempCustomer.id})}">Update</a>
                             |
                             <a class="action-link" th:href="@{/customer/showFormForDelete(customerId=${tempCustomer.id})}">Delete</a>
+                            |
+                            <a class="action-link" th:href="@{/order/list(customerId=${tempCustomer.id})}">Orders</a>
+
                         </td>
                     </tr>
                 </tbody>

@@ -23,12 +23,12 @@ public class SecurityFilter {
 
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-    
+
     @Autowired
     private CustomAccessDeniedHandler customAccessDeniedHandler;
 
 
-	@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
@@ -36,15 +36,18 @@ public class SecurityFilter {
                 .sessionManagement(sessionMangConfig -> sessionMangConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling(exceptionHandling -> 
-                	exceptionHandling.accessDeniedHandler(customAccessDeniedHandler))
+                .exceptionHandling(exceptionHandling ->
+                        exceptionHandling.accessDeniedHandler(customAccessDeniedHandler))
                 .authorizeHttpRequests( authConfig -> {
-                	authConfig.requestMatchers("/resources/**","/").permitAll();
+                    authConfig.requestMatchers("/resources/**","/").permitAll();
 //                    authConfig.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll();
 //                    authConfig.requestMatchers(HttpMethod.POST, "/auth/register").permitAll();
                     authConfig.requestMatchers("/error").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/customer/delete").hasRole("ADMIN");
+                    authConfig.requestMatchers(HttpMethod.POST, "/order/delete").hasRole("ADMIN");
                     authConfig.requestMatchers(HttpMethod.GET, "/customer/**").hasAnyRole("USER","ADMIN");
+                    authConfig.requestMatchers(HttpMethod.GET, "/order/**").hasAnyRole("USER","ADMIN");
+                    authConfig.requestMatchers(HttpMethod.POST, "/order/**").hasAnyRole("USER","ADMIN");
                     authConfig.requestMatchers("/**").permitAll();
                     authConfig.anyRequest().authenticated();
 

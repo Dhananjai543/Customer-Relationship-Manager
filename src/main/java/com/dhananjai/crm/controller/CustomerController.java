@@ -1,11 +1,19 @@
 package com.dhananjai.crm.controller;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
+import com.dhananjai.crm.entity.Order;
+import com.dhananjai.crm.service.ExcelDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,21 +22,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dhananjai.crm.entity.Customer;
 import com.dhananjai.crm.service.CustomerService;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	
-	//need to inject the customer dao
-	//@Autowired	 //spring will scan for a component that implements CustomerDAO interface
-	//private CustomerDAO customerDAO;
-	
-	//now we'll use service layer instead of directly using the dao
-	
-	//need to inject our customer service
+
 	@Autowired
 	private CustomerService customerService;
-	
+
+	@Autowired
+	ExcelDataService excelservice;
+
+	@Value("${app.upload.dir:${user.home}/Documents}")
+	public String uploadDir;
+
 	@GetMapping("/list")
 	public String listCustomer(Model theModel) {
 		
@@ -114,6 +122,25 @@ public class CustomerController {
 		customerService.deleteById(theCustomer.getId());
 		return "redirect:/customer/list";
 	}
+
+	@GetMapping("/bulkUpload")
+	public String bulkUpload() {
+		return "upload-form";
+	}
+
+	@PostMapping("/uploadFile")
+	public String uploadFile(@RequestParam("file") MultipartFile file, Model model) {
+
+		System.out.println("Uploading file ....");
+		Path copyLocation = Paths
+				.get(uploadDir + File.separator + StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename())));
+		System.out.println(copyLocation.toString());
+		List<Order> excelDataAsList = excelservice.getExcelDataAsList(copyLocation.toString());
+		int noOfRecords = excelservice.saveExcelData(excelDataAsList);
+		model.addAttribute("noOfRecords",noOfRecords);
+		return "upload-success";
+	}
+
 }
 
 

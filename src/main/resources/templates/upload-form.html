@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>File Upload Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/upload.css}"/>
+</head>
+<body>
+
+<div class="card">
+    <h2>File Upload & Data Save Page</h2>
+
+    <form th:action="@{/customer/uploadFile}" method="POST" enctype="multipart/form-data">
+        <label>Please select a file to upload:</label>
+        <input type="file" name="file"/>
+
+        <label>Press here to upload the file:</label>
+        <input type="submit" value="Upload"/>
+
+        <h4 th:if="${message}" th:text="${message}"></h4>
+
+        <p>
+            <a th:href="@{/customer/list}"><b>Cancel?</b></a>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

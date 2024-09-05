@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List Orders</title>
+
+    <!-- reference our style sheet -->
+    <link type="text/css" rel="stylesheet" th:href="@{/css/list-customers-styles.css}" />
+</head>
+<body>
+<noscript>
+    <h2>Sorry! Your browser doesn't support Javascript</h2>
+</noscript>
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM - Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<!-- put a new button : Add Customer -->
+<div class="button-container-wrapper">
+    <div class="button-container">
+        <button id="addOrderButton" name="addOrderButton" type="button">Add Order</button>
+    </div>
+
+    <div class="button-container">
+        <button id="backToCustomerListButton" name="backToCustomerListButton" type="button">Back to List</button>
+    </div>
+</div>
+
+<input type="hidden" id="customerId" th:value="${customerId}" />
+
+<div id="container">
+
+    <div id="content">
+        <table>
+            <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Product</th>
+                <th>Review</th>
+                <th>Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- loop over and print our customers -->
+            <tr th:each="tempOrder : ${orders}">
+                <td th:text="${tempOrder.id}"></td>
+                <td th:text="${tempOrder.product}"></td>
+                <td th:text="${tempOrder.review}"></td>
+                <td>
+                    <!-- Display the update link -->
+                    <a class="action-link" th:href="@{/order/showFormForUpdate(orderId=${tempOrder.id})}">Update</a>
+                    |
+                    <a class="action-link" th:href="@{/order/showFormForDelete(orderId=${tempOrder.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div id="footer">
+    <p>Made with ❤️ by Dhananjai</p>
+</div>
+<script type="text/javascript" src="/js/order.js"></script>
+</body>
+</html>
