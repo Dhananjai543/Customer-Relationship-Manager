@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Results</title>
+  <link rel="stylesheet" th:href="@{/css/upload.css}" />
+</head>
+<body>
+<div class="card wide-card">
+  <h2>AI Analysis Results</h2>
+  <p th:text="${answer}"></p>
+  <div class="back-link">
+    <a th:href="@{/customer/list}">Back to Home</a>
+  </div>
+</div>
+<footer>
+  <p>Made with ❤️ by Dhananjai</p>
+</footer>
+</body>
+</html>

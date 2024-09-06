@@ -11,4 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("clicked bulkUploadButton")
         window.location.href = '/customer/bulkUpload';
     });
+
+    var aiAnalysisButton = document.getElementById('aiAnalysisButton');
+    aiAnalysisButton.addEventListener('click' , function() {
+        console.log("clicked aiAnalysisButton")
+        window.location.href = '/analyzeOrders';
+    })
 });

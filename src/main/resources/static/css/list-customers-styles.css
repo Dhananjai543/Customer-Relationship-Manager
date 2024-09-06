@@ -1,11 +1,9 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f0f0;
+html, body {
+    height: 100vh; /* Full viewport height */
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    overflow: hidden; /* Disable scrolling for the entire page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #wrapper {
@@ -23,6 +21,7 @@ body {
 
 .button-container-wrapper {
     display: flex;
+    justify-content: center; /* Center the buttons horizontally */
     gap: 20px; /* Space between buttons */
     margin: 20px 0;
 }
@@ -31,7 +30,7 @@ body {
     margin: 0; /* Reset margin for containers inside flex */
 }
 
-#addCustomerButton, #bulkUploadButton, #addOrderButton, #backToCustomerListButton {
+#addCustomerButton, #bulkUploadButton, #addOrderButton, #aiAnalysisButton, #backToCustomerListButton {
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -44,17 +43,21 @@ body {
 #addCustomerButton:hover,
 #addOrderButton:hover,
 #bulkUploadButton:hover,
+#aiAnalysisButton:hover,
 #backToCustomerListButton:hover {
     background-color: #218838;
 }
 
 #container {
-    width: 80%;
+    width: 80%; /* Full width (80% of the viewport width) */
+    max-width: 1200px; /* Optional: Set a max width if needed */
     margin: 0 auto;
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60vh; /* Adjust height to fit the viewport */
+    overflow-y: auto; /* Enable vertical scrolling within the container */
 }
 
 table {
@@ -92,20 +95,15 @@ td {
     text-decoration: underline;
 }
 
-
 /* Footer strip */
-#footer {
-    width: 100%;
+footer {
     background-color: #007BFF;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: absolute;
+    padding: 4px 0;
+    position: relative;
+    margin-top: 2px; /* Add space between content and footer */
+    width: 100%;
     bottom: 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#footer p {
-    margin: 0;
     font-size: 14px;
 }

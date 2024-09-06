@@ -1,10 +1,11 @@
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
     display: flex;
+    flex-direction: column; /* Change flex direction to column */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -20,6 +21,10 @@ body {
     width: 100%;
     margin: 20px;
     text-align: center;
+}
+
+.wide-card {
+    max-width: 800px; /* Adjust to your desired width */
 }
 
 h2, b {
@@ -73,4 +78,16 @@ a:hover {
 
 .back-link a:hover {
     text-decoration: underline;
+}
+
+footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 4px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    font-size: 14px;
+    margin-top: auto; /* Push the footer to the bottom */
 }
