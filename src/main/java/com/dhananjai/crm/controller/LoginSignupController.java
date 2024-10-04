@@ -2,6 +2,8 @@ package com.dhananjai.crm.controller;
 
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/")
+@Tag(name = "Login/Signup APIs", description = "APIs for logging and signup of users.")
 public class LoginSignupController {
 	
 	@Autowired
@@ -39,6 +42,7 @@ public class LoginSignupController {
 	private JwtService jwtService;
 	
 	@GetMapping("/")
+	@Operation(summary = "Show the login form", description = "Displays the login form and clears any existing JWT cookies.")
 	public String showLoginForm(Model theModel, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("inside");
 		// Clear JWT cookie
@@ -54,6 +58,7 @@ public class LoginSignupController {
 	}
 	
 	@PostMapping("/processLoginForm")
+	@Operation(summary = "Process the login form", description = "Authenticates the user and sets a JWT cookie upon successful login.")
 	public String processLoginForm(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
 			Model model, HttpServletRequest hrequest, HttpServletResponse response) {
 		
@@ -86,6 +91,7 @@ public class LoginSignupController {
 	}
 	
 	@GetMapping("/showSignUpForm")
+	@Operation(summary = "Show the signup form", description = "Displays the signup form and clears any existing JWT cookies.")
 	public String showSignupForm(Model theModel, HttpServletResponse response) {
 		Cookie jwtCookie = new Cookie("jwtToken", null);
         jwtCookie.setHttpOnly(true);
@@ -101,6 +107,7 @@ public class LoginSignupController {
 	}
 	
 	@PostMapping("/processSignUpForm")
+	@Operation(summary = "Process the signup form", description = "Registers a new user and authenticates them, setting a JWT cookie upon successful signup.")
 	public String processSignUpForm(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
 			Model model, HttpServletResponse response) {
 

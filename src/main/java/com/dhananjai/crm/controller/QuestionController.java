@@ -5,6 +5,8 @@ import com.dhananjai.crm.entity.Order;
 import com.dhananjai.crm.entity.Question;
 import com.dhananjai.crm.repository.OrderRepository;
 import com.dhananjai.crm.service.OpenAIService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @Controller
+@Tag(name = "Analyzer APIs", description = "APIs for interacting with OpenAI and analyzing orders")
 public class QuestionController {
 
     private final OpenAIService openAIService;
@@ -26,11 +29,13 @@ public class QuestionController {
     }
 
     @PostMapping("/ask")
+    @Operation(summary = "Ask a question", description = "Sends a question to the OpenAI API and retrieves an answer.")
     public Answer askQuestion(@RequestBody Question question){
         return openAIService.getAnswer(question);
     }
 
     @GetMapping("/analyzeOrders")
+    @Operation(summary = "Analyze all orders", description = "Fetches all orders and sends them to OpenAI for analysis. Receives AI-generated insights and recommendations.")
     public String analyzeOrders(Model model){
         List<Order> orders = orderRepository.findAll();
         StringBuilder questionString = new StringBuilder();

@@ -1,5 +1,6 @@
 package com.dhananjai.crm.authentication;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +11,7 @@ import com.dhananjai.crm.entity.User;
 
 @RestController
 @RequestMapping("/")
+@Tag(name = "Auth APIs", description = "APIs for user authentication and registration")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;

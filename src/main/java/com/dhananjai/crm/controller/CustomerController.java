@@ -9,6 +9,11 @@ import java.util.Optional;
 
 import com.dhananjai.crm.entity.Order;
 import com.dhananjai.crm.service.ExcelDataService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/customer")
+@Tag(name = "Customer APIs", description = "APIs for managing customers")
 public class CustomerController {
 
 	@Autowired
@@ -38,21 +44,23 @@ public class CustomerController {
 	public String uploadDir;
 
 	@GetMapping("/list")
+	@Operation(summary = "Get a list of customers")
 	public String listCustomer(Model theModel) {
-		
+
 		//get customers from the dao
 		//List<Customer> theCustomers = customerDAO.getCustomers();
-		
+
 		//get customers from the service
 		List<Customer> theCustomers = customerService.findAll();
-		
+
 		//add the customers to the model
-		theModel.addAttribute("customers",theCustomers);
-		
+		theModel.addAttribute("customers", theCustomers);
+
 		return "list-customers";
 	}
 	
 	@GetMapping("/showFormForAdd")
+	@Operation(summary = "Show form for adding a new customer")
 	public String showFormForAdd(Model theModel) {
 		
 		//create a new model attribute to bind form data
@@ -63,6 +71,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/showFormForDelete")
+	@Operation(summary = "Show form for deleting a customer")
+	@Parameter(name = "customerId", description = "ID of the customer to be deleted", required = true)
 	public String showFormForDelete(@RequestParam("customerId") int theId, Model theModel) {
 		
 		//get the customer from the service
@@ -82,6 +92,11 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/saveCustomer")
+	@Operation(summary = "Save a customer")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Customer saved successfully"),
+			@ApiResponse(responseCode = "400", description = "Error saving customer")
+	})
 	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer, Model model) {
 		
 		String email = theCustomer.getEmail();
@@ -97,6 +112,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/showFormForUpdate")
+	@Operation(summary = "Show form for updating a customer")
+	@Parameter(name = "customerId", description = "ID of the customer to be updated", required = true)
 	public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) {
 		
 		//get the customer from the service
@@ -116,6 +133,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/delete")
+	@Operation(summary = "Delete a customer")
 	public String deleteCustomer(@ModelAttribute("customer") Customer theCustomer) {
 		
 		//delete the customer
@@ -124,11 +142,14 @@ public class CustomerController {
 	}
 
 	@GetMapping("/bulkUpload")
+	@Operation(summary = "Show form for bulk uploading customers")
 	public String bulkUpload() {
 		return "upload-form";
 	}
 
 	@PostMapping("/uploadFile")
+	@Operation(summary = "Upload a file containing customer data")
+	@Parameter(name = "file", description = "The file to be uploaded", required = true)
 	public String uploadFile(@RequestParam("file") MultipartFile file, Model model) {
 
 		System.out.println("Uploading file ....");
